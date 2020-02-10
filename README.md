@@ -24,18 +24,25 @@ status(account - Active/inactive) etc.)
 
 APIs :
 
+
 GET :  get-profile
+
 Input - JSON { profile_id : Integer }
+
 Output - JSON { profile-details :  example id, name, email, status }
 
 
 POST : signup
+
 Input : JSON { profile details like name, email, phone_number, password }
+
 Output - JSON { profile_id : Interger, message - String}
 
 
 POST : signin
+
 Input : JSON { email/phone : abc@gmail.com, password : xyz}
+
 Output : JSON { profile-details(basic) and success message}
 
 
