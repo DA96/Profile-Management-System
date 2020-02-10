@@ -1,0 +1,4 @@
+# config/schedule.yml
+my_first_job:
+  cron: " /1 * * *" #it will perform job at 2.30 pm daily
+  class: "GenerateReportWorker"

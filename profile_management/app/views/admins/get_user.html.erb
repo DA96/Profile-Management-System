@@ -1,0 +1,37 @@
+<h1>User Details</h1>
+<p>
+	<h3>User ID : <%= @user.id %></h3>
+</p>
+
+<p>
+	<h3>Name : <%= @user.name %></h3>
+</p>
+
+<p>
+	<h3>Phone number : <%= @user.phone_no %></h3>
+</p>
+
+<p>
+	<h3>Status : <%= @user.status %></h3>
+</p>
+
+<p>
+	<h3>Profile Type : <%= @user.user_type %></h3>
+</p>
+
+<% if !@user.children.empty? %>
+	<p>Children: </p>
+
+	<% @user.children.each do |uc| %>
+		<%= link_to uc.id, admins_get_user_path(uc.id)%>
+	<% end %>
+
+	<% @user.children.each do |uc| %>
+		<% if !uc.children.empty? %>
+			<p>Grandchildren: </p>
+			<% uc.children.each do |gc| %>
+				<%= link_to gc.id, admins_get_user_path(gc.id)%>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>

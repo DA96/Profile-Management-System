@@ -1,0 +1,28 @@
+<h1>Edit User</h1>
+ 
+<%= form_with(model: @user, method: :patch, url: edit_user_path, local: true) do |form| %>
+  <p>
+    <%= form.label :Name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :"Phone number" %><br>
+    <%= form.text_field :phone_no %>
+  </p>
+ 
+  <p>
+    <%= form.label :Password %><br>
+    <%= form.password_field :password %>
+  </p>
+
+  <p>
+    <%= form.label :"Profile Type" %><br>
+    <%= form.select :user_type, User.user_types.keys %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>

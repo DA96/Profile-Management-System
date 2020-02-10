@@ -1,0 +1,50 @@
+<h1>Search Users</h1>
+
+<%= form_for 'admins/search', method: :get do |f| %>
+ <p>
+  <%= f.label "Search for" %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Go", name: nil %>
+ </p>
+<% end %>
+
+<% unless @users.nil? %>
+  <% if @users.empty? %>
+    <h2>No users found matching your query.</h2>
+  <% else %>
+    <h2>Search results</h2>
+
+    <table style="width: 0%;">
+      <thead>
+         <tr>
+           <th>Profile Id</th>
+           <th>Name</th>
+           <th>Email</th>
+           <th>Phone number</th>
+           <th>Status</th>
+           <th>Profile Type</th>
+         </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+          	<td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.phone_no %></td>
+            <td><%= user.status %></td>
+            <td><%= user.user_type %></td>
+            <td><%= link_to 'Get Profile', admins_get_user_path(user.id) %></td>
+            <td><%= link_to 'Edit', admins_edit_user_path(user.id) %></td>
+            <% if user.status == 'active'  %>
+              <td><%= link_to 'Deactivate', admins_deactivate_user_path(user.id) %></td>
+            <% else %>
+              <td><%= link_to 'Activate', admins_activate_user_path(user.id) %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  <% end %>
+<% end %>

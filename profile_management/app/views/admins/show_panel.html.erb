@@ -1,0 +1,12 @@
+<% if session[:admin_id] %>
+	<h1>Admin Internal Panel</h1>
+	<h2>Welcome <%= Admin.find(session[:admin_id]).username %></h2>
+	<%= link_to 'Logout', '/admins/logout' %><br><br>
+	<%= link_to 'Generate Report', '/admins/generate_report' %><br><br>
+	<%= link_to 'Search', '/admins/search' %><br><br>
+	<%= link_to 'Create User', '/admins/create_user' %>
+
+<% else %>
+	<h1>You are not logged in</h1>
+	<%= link_to 'Log In', '/admins/login' %>
+<% end %>

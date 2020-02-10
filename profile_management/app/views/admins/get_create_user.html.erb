@@ -1,0 +1,16 @@
+<h1>Create User</h1>
+<%= form_for @user, url: admins_create_user_path do |f|%>
+  <%= f.label :Name%><br>
+  <%= f.text_field :name%><br><br>
+  <%= f.label :Email%><br>
+  <%= f.email_field :email%><br><br>
+  <%= f.label :"Phone number"%><br>
+  <%= f.text_field :phone_no%><br><br>
+  <%= f.label :Password%><br>
+  <%= f.password_field :password%><br><br>
+  <%= f.label :"Profile Type"%><br>
+  <%= f.select :user_type, User.user_types.keys %><br><br><br>
+  <%= f.label :"Parent ID"%><br>
+  <%= f.text_field :parent_id%><br><br><br>
+  <%= f.submit %>
+<%end%>
